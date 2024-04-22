@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "b3dd2ffc-d6ec-4e70-ad5a-1da9a391d138",
+		"name": "Reqres",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31360575",
+		"_collection_link": "https://www.postman.com/interstellar-sunset-730826/workspace/postman-api-fundamentals-student-expert/collection/31360575-b3dd2ffc-d6ec-4e70-ad5a-1da9a391d138?action=share&source=collection_link&creator=31360575"
+	},
+	"item": [
+		{
+			"name": "Get Info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Page is a number', function () {\r",
+							"    pm.expect(typeof pm.response.json().page).to.equal('number');\r",
+							"});\r",
+							"pm.test('Each data object has at least one property which is a string', () => {\r",
+							"    pm.response.json().data.forEach(data => {\r",
+							"        pm.expect(typeof Object.values(data).find(value => typeof value === 'string')).to.equal('string');\r",
+							"    });\r",
+							"});\r",
+							"pm.test('per_page is a number', function () {\r",
+							"    var perPage = pm.response.json().per_page;\r",
+							"    pm.expect(typeof perPage).to.equal('number');\r",
+							"});\r",
+							"pm.test('total is a number', function () {\r",
+							"    var total = pm.response.json().total;\r",
+							"    pm.expect(typeof total).to.equal('number');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "reqres.in/api/users?page=2",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
